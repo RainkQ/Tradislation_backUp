@@ -22,11 +22,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity
                 android:name=".activity.DetailActivity"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity android:name=".activity.BigTypeActivity">
         </activity>
     </application>
 

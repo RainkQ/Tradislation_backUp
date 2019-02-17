@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -33,6 +34,21 @@ public class MainActivity extends Activity {
 
     private List<Translation> translations_searched = new ArrayList<>();
 
+
+    class BigType{
+        public String typeName;
+        public ArrayList<SmallType> smallTypes;
+    }
+
+    class SmallType{
+        public String typeName;
+        public ArrayList<Translation> translations;
+    }
+
+
+
+
+
     private RecyclerView recyclerView;
     private EditText editText;
     private ScrollView mScrollView;
@@ -50,6 +66,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycler_view);
         editText = findViewById(R.id.search_text);
+
+        //按钮获取
+        Button big_type_qin = findViewById(R.id.bigType_qin);
+        Button big_type_qi = findViewById(R.id.bigType_qi);
+        Button big_type_shu = findViewById(R.id.bigType_shu);
+        Button big_type_hua = findViewById(R.id.bigType_hua);
+
+
 
 
         queryTranslations();
