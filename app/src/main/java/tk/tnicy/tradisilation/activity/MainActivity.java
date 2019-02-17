@@ -3,13 +3,10 @@ package tk.tnicy.tradisilation.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -19,7 +16,6 @@ import okhttp3.Response;
 import org.litepal.crud.DataSupport;
 import tk.tnicy.tradisilation.R;
 import tk.tnicy.tradisilation.db.Translation;
-import tk.tnicy.tradisilation.util.AndroidBug5497Workaround;
 import tk.tnicy.tradisilation.util.HttpUtil;
 import tk.tnicy.tradisilation.util.TranslationAdapter;
 import tk.tnicy.tradisilation.util.Utility;
@@ -37,7 +33,6 @@ public class MainActivity extends Activity {
 
     private List<Translation> translations_searched = new ArrayList<>();
 
-    List<String> dataList = new ArrayList<>();
     private RecyclerView recyclerView;
     private EditText editText;
     private ScrollView mScrollView;
@@ -84,7 +79,6 @@ public class MainActivity extends Activity {
         });
 
 
-//        AndroidBug5497Workaround.assistActivity(this);
 
 
     }
