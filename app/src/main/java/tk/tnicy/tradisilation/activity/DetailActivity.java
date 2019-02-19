@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import tk.tnicy.tradisilation.R;
+import tk.tnicy.tradisilation.db.Translation;
 import tk.tnicy.tradisilation.util.GetImage;
 
 import java.util.ArrayList;
@@ -40,12 +41,14 @@ public class DetailActivity extends Activity {
 
     private void init() {
 
-        String translation_chi = getIntent().getStringExtra("translation_chi");
-        String translation_eng = getIntent().getStringExtra("translation_eng");
-        String translation_detail = getIntent().getStringExtra("translation_detail");
+        Translation translation = (Translation) getIntent().getSerializableExtra("translation");
 
-        String translation_bigType = getIntent().getStringExtra("translation_bigType");
-        String translation_smallType = getIntent().getStringExtra("translation_smallType");
+        String translation_chi = translation.getChi();
+        String translation_eng = translation.getEng();
+        String translation_detail = translation.getDetail();
+
+        String translation_bigType = translation.getBigType();
+        String translation_smallType = translation.getSmallType();
 
         TextView item_chi = findViewById(R.id.item_chi);
         TextView item_eng = findViewById(R.id.item_eng);

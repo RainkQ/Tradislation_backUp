@@ -5,35 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-import tk.tnicy.tradisilation.Entity.BigType;
 import tk.tnicy.tradisilation.Entity.SmallType;
 import tk.tnicy.tradisilation.R;
+import tk.tnicy.tradisilation.db.Translation;
 
 import java.util.ArrayList;
 
-public class BigTypeActivity extends AppCompatActivity {
+public class SmallTypeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_big_type);
+        setContentView(R.layout.activity_small_type);
 
-        Intent lastIntent = getIntent();
-
-
-
-        final BigType bigType = ((BigType) lastIntent.getSerializableExtra("BigType"));
-
-        final ArrayList<String> smallTypes_string = new ArrayList<>();
-
-        for (SmallType smallType :
-                bigType.smallTypes) {
-            smallTypes_string.add(smallType.typeName);
-        }
-
-
-        ListView listView = findViewById(R.id.bigType_list);
-        TextView title = findViewById(R.id.BigType_Name);
+        TextView title = findViewById(R.id.SmallType_Name);
+        ListView listView = findViewById(R.id.smallType_list);
 
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -43,27 +29,34 @@ public class BigTypeActivity extends AppCompatActivity {
             }
         });
 
-        title.setText(bigType.typeName);
+        Intent lastIntent = getIntent();
+        final SmallType smallType = (SmallType) lastIntent.getSerializableExtra("SmallType");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(BigTypeActivity.this, android.R.layout.simple_list_item_1, smallTypes_string);
+        title.setText(smallType.typeName);
+
+        ArrayList<String> translations_string = new ArrayList<>();
+
+        for (Translation translation :
+                smallType.translations) {
+            translations_string.add(translation.getChi());
+        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(SmallTypeActivity.this, android.R.layout.simple_list_item_1,translations_string);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(BigTypeActivity.this, SmallTypeActivity.class);
+                Intent intent = new Intent(SmallTypeActivity.this, DetailActivity.class);
                 Bundle nextBundle = new Bundle();
-                nextBundle.putSerializable("SmallType",bigType.smallTypes.get(position));
-
+                nextBundle.putSerializable("translation", smallType.translations.get(position));
                 intent.putExtras(nextBundle);
-
                 startActivity(intent);
+
 
             }
         });
-
-
-
 
     }
 }

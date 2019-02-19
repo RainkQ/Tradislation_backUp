@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,12 +61,9 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
                 int position = holder.getAdapterPosition();
                 Translation translation = mTranslationList.get(position);
                 Intent intent = new Intent(mContext, DetailActivity.class);
-                intent.putExtra("translation_chi", translation.getChi());
-                intent.putExtra("translation_eng", translation.getEng());
-                intent.putExtra("translation_detail", translation.getDetail());
-                intent.putExtra("translation_related", translation.getRelated());
-                intent.putExtra("translation_bigType", translation.getBigType());
-                intent.putExtra("translation_smallType", translation.getSmallType());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("translation", translation);
+                intent.putExtras(bundle);
                 mContext.startActivity(intent);
 
             }

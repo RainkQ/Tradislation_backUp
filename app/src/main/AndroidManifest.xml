@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".activity.BigTypeActivity">
         </activity>
+        <activity android:name=".activity.SmallTypeActivity">
+        </activity>
     </application>
 
 </manifest>

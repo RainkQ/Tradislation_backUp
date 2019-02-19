@@ -2,9 +2,11 @@ package tk.tnicy.tradisilation.db;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Translation extends DataSupport {
+public class Translation extends DataSupport implements Serializable {
+    private static final long serialVersionUID = -2401737782097994016L;
     private int id;
     private String BigType;
     private String SmallType;
